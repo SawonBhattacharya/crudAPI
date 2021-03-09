@@ -11,9 +11,9 @@ const connectMdb=()=>{
         console.log("Connected to database")
     })
     .catch((err)=>{
-        console.error('Error occured, cannot connect!!! \n ${err}');
+        console.error(`Error occured, cannot connect!!! \n ${err}`);
     })
 
 };
 
-module.exports=connectMdb;
+module.exports={connectMdb};

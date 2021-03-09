@@ -1,12 +1,15 @@
 const express=require('express')
-var dbConnection=require('./DB/dbconnect.js')
+var dbConnection=require('./DB/dbconnect')
 
 const app=express()
+host='127.0.0.1';
 port=9000;
 
-const playerRouter=require('./router/cricketer.js')
-app.use('./cricketer',playerRouter);
+const db = dbConnection.connectMdb();
 
-app.listen(port,()=>{
-    console.log("Running...")
+const playerRouter=require('./router/cricketer.js')
+app.use('/cricketer',playerRouter);
+
+app.listen(port, host, ()=>{
+    console.log("Running at: http://" + host + ":" + port)
 });
